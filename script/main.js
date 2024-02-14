@@ -6,14 +6,6 @@ const animationTimeline = () => {
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  // Autoplay the audio when the page is loaded
-  window.addEventListener('load', function() {
-      audio.play().catch(error => {
-          // Autoplay was prevented, show a play button or other UI to let the user start the audio
-          console.log('Autoplay was prevented. You may want to provide a user interface to start the audio.');
-      });
-  });
-
   const soundEffects = {
     pop: './sound/pop.mp3',
     whoosh1: './sound/whoosh1.mp3',
