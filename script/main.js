@@ -1,29 +1,31 @@
+const soundEffects = {
+  love: './sound/love.mp3',
+  pop: './sound/pop.mp3',
+  whoosh1: './sound/whoosh1.mp3',
+  whoosh2: './sound/whoosh2.mp3',
+  typing: './sound/typing.mp3',
+  sent: './sound/sent.mp3',
+  paper: './sound/paper.mp3',
+  water: './sound/water.mp3',
+  mess: './sound/mess.mp3',
+};
+
+const audio = new Audio(soundEffects['love']);
+audio.volume = 0.6;
 // Animation Timeline
-const audio = document.getElementById("backgroundAudio");
-audio.volume = 0.4;
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  const soundEffects = {
-    pop: './sound/pop.mp3',
-    whoosh1: './sound/whoosh1.mp3',
-    whoosh2: './sound/whoosh2.mp3',
-    typing: './sound/typing.mp3',
-    sent: './sound/sent.mp3',
-    paper: './sound/paper.mp3',
-    water: './sound/water.mp3',
-    mess: './sound/mess.mp3',
-    // Thêm các idea khác tương ứng với âm thanh
-  };
+  // Autoplay the audio when the page is loaded
   function playSound(ideaId) {
     const audio = new Audio(soundEffects[ideaId]);
     audio.play().catch(error => {
       console.log(`Unable to play sound for ${ideaId}: ${error.message}`);
     });
   }
-
+  playSound('')
   textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
     .join("</span><span>")}</span`;
@@ -118,9 +120,6 @@ const animationTimeline = () => {
     )
     .to(".fake-btn", 0.1, {
       backgroundColor: "#ff6f77",
-      onStart: function() {
-        playSound('sent');
-      },
     })
     .to(
       ".four",
@@ -191,9 +190,6 @@ const animationTimeline = () => {
         opacity: 0,
         rotation: 15,
         ease: Expo.easeOut,
-        onStart: function() {
-          playSound('water');
-        },
       },
       0.2
     )
@@ -336,7 +332,7 @@ function fadeOutAndStop(audioElement, fadeDuration) {
       } else {
           clearInterval(fadeOut);
           audioElement.pause();
-          audioElement.volume = 1; // Reset volume for future play
+          audioElement.volume = 0.6; // Reset volume for future play
       }
   }, fadeInterval);
 }
