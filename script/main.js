@@ -361,7 +361,16 @@ const resolveFetch = () => {
   });
 };
 
-window.addEventListener('load', function() {
+window.addEventListener('click', function() {
+  audio.play().catch(error => {
+    console.log('Autoplay was prevented. You may want to provide a user interface to start the audio.');
+  }).finally(() => {
+    resolveFetch().then(() => {
+      animationTimeline();
+    });
+  });
+});
+window.addEventListener('touchstart', function() {
   audio.play().catch(error => {
     console.log('Autoplay was prevented. You may want to provide a user interface to start the audio.');
   }).finally(() => {
