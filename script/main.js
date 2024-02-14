@@ -25,7 +25,6 @@ const animationTimeline = () => {
       console.log(`Unable to play sound for ${ideaId}: ${error.message}`);
     });
   }
-  playSound('')
   textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
     .join("</span><span>")}</span`;
