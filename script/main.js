@@ -9,7 +9,7 @@ const soundEffects = {
   water: './sound/water.mp3',
   mess: './sound/mess.mp3',
 };
-
+const button = document.querySelector('.love-button');
 const audio = new Audio(soundEffects['love']);
 audio.volume = 0.6;
 // Animation Timeline
@@ -379,6 +379,16 @@ window.addEventListener('touchstart', function() {
     });
   });
 });
+
+function fadeOutButton() {
+  button.classList.add('fade-out');
+  setTimeout(function () {
+    button.style.display = 'none';
+  }, 500);
+}
+
+button.addEventListener('click',fadeOutButton);
+button.addEventListener('touchstart',fadeOutButton);
 
 function fadeOutAudio() {
   fadeOutAndStop(audio, 4000); // Thay đổi giá trị 2000 nếu bạn muốn thay đổi thời lượng giảm dần
