@@ -319,6 +319,12 @@ const animationTimeline = () => {
   });
 
 };
+function fadeOutButton() {
+  button.classList.add('fade-out');
+  setTimeout(function () {
+    button.style.display = 'none';
+  }, 500);
+}
 
 function fadeOutAndStop(audioElement, fadeDuration) {
   var volume = audioElement.volume;
@@ -362,6 +368,7 @@ const resolveFetch = () => {
 };
 
 window.addEventListener('click', function() {
+  fadeOutButton();
   audio.play().catch(error => {
     console.log('Autoplay was prevented. You may want to provide a user interface to start the audio.');
   }).finally(() => {
@@ -370,26 +377,7 @@ window.addEventListener('click', function() {
     });
   });
 });
-window.addEventListener('touchstart', function() {
-  audio.play().catch(error => {
-    console.log('Autoplay was prevented. You may want to provide a user interface to start the audio.');
-  }).finally(() => {
-    resolveFetch().then(() => {
-      animationTimeline();
-    });
-  });
-});
-
-function fadeOutButton() {
-  button.classList.add('fade-out');
-  setTimeout(function () {
-    button.style.display = 'none';
-  }, 500);
-}
-
-button.addEventListener('click',fadeOutButton);
-button.addEventListener('touchstart',fadeOutButton);
 
 function fadeOutAudio() {
-  fadeOutAndStop(audio, 4000); // Thay đổi giá trị 2000 nếu bạn muốn thay đổi thời lượng giảm dần
+  fadeOutAndStop(audio, 4000); 
 }
