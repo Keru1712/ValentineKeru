@@ -253,6 +253,12 @@ body {
 }
 
 /* Media Queries */
+@media (max-width: 900px) {
+  .six img {
+      max-width: 80%;
+  }
+}
+
 @media screen and (max-height: 1000px) {
   .six .hat {
     left: 40%;
